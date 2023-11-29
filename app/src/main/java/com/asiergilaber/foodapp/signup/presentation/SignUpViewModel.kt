@@ -22,14 +22,13 @@ class SignUpViewModel @Inject constructor(
     private val _name = MutableStateFlow("")
     val name = _name
 
-    fun onEmailOrPasswordChanged(email: String, password: String) {
+    fun onEmailOrPasswordChanged(email: String, password: String , name: String) {
         _email.value = email
         _password.value = password
-    }
-
-    fun onNameChanged(name: String){
         _name.value = name
     }
+
+
 
     fun onSignUpButtonCLicked() : Unit {
         viewModelScope.launch {

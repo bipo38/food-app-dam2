@@ -65,7 +65,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
             InputTextBasic(
                 value = name,
                 label = "Username",
-                onTextChanged = { signUpViewModel.onNameChanged(name) },
+                onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(email,password,it) },
                 placeholder = "Username",
                 keyboardType = KeyboardType.Text
             )
@@ -73,7 +73,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
             InputTextBasic(
                 value = email,
                 label = "Email",
-                onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(it, password) },
+                onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(it, password,name) },
                 placeholder = "Email",
                 keyboardType = KeyboardType.Email
             )
@@ -81,7 +81,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
             InputTextBasic(
                 value = password,
                 label = "Password",
-                onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(email, it) },
+                onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(email, it,name) },
                 placeholder = "Password",
                 keyboardType = KeyboardType.Password
             )
