@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.asiergilaber.foodapp.core.naviagtion.Navigator
 import com.asiergilaber.foodapp.signin.domain.SignInUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,6 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
+    private val navigator: Navigator,
     private val signInUseCase: SignInUseCase
 ) : ViewModel()  {
 
@@ -26,6 +28,10 @@ class SignInViewModel @Inject constructor(
     fun onEmailOrPasswordChanged(email: String, password: String) {
         _email.value = email
         _password.value = password
+    }
+
+    fun navigateSignUp(){
+        navigator.navigate("signUp")
     }
 
     fun onSignInButtonCLicked() : Unit {

@@ -30,7 +30,7 @@ import com.asiergilaber.foodapp.ui.theme.YellowMain
 
 
 @Composable
-fun Body(signInViewModel: SignInViewModel , modifier: Modifier = Modifier) {
+fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifier) {
 
     val email: String by signInViewModel.email.collectAsState()
     val password: String by signInViewModel.password.collectAsState()
@@ -75,7 +75,7 @@ fun Body(signInViewModel: SignInViewModel , modifier: Modifier = Modifier) {
                 )
                 Spacer(modifier = Modifier.size(16.dp))
 
-                TextButton(onClick = { /*ewModel.onNavigateToRegister()*/ }) {
+                TextButton(onClick = { signInViewModel.navigateSignUp() }) {
                     Text(text = "Don’t have an account? Register now!" ,
                         modifier = modifier.fillMaxWidth().padding(bottom = 15.dp, top = 15.dp),
                         style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black)
