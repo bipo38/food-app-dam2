@@ -1,6 +1,7 @@
 package com.asiergilaber.foodapp.core.dependencyinjection
 
 import com.asiergilaber.foodapp.signin.data.network.SignInClient
+import com.asiergilaber.foodapp.signup.data.network.SignUpClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +23,8 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideSignInClient(retrofit: Retrofit): SignInClient = retrofit.create(SignInClient::class.java)
+
+    @Singleton
+    @Provides
+    fun provideSignupClient(retrofit: Retrofit): SignUpClient = retrofit.create(SignUpClient::class.java)
 }

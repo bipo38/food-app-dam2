@@ -11,6 +11,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.asiergilaber.foodapp.signin.presentation.Body
 import com.asiergilaber.foodapp.signin.presentation.SignInViewModel
+import com.asiergilaber.foodapp.signup.presentation.SignUpScreen
+import com.asiergilaber.foodapp.signup.presentation.SignUpViewModel
 import com.asiergilaber.foodapp.ui.theme.FoodAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
@@ -23,6 +25,7 @@ class FoodApp: Application() {
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val signInViewModel: SignInViewModel by viewModels()
+    private val signupViewModel : SignUpViewModel  by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +36,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Body(signInViewModel)
-
+                   // Body(signInViewModel)
+                    SignUpScreen(signUpViewModel = signupViewModel)
                 }
             }
         }
