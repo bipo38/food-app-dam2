@@ -9,6 +9,6 @@ import retrofit2.http.POST
 interface SignInClient {
 
     @Headers("Content-Type: application/json" , "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsdXRydHFjZWVyZ2FmZHRxamViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAwNTI2MDksImV4cCI6MjAxNTYyODYwOX0.M0LOr8aHu4GA8TE9B-7skWZl348m2YF1ACUX_CZQcBw")
-    @POST("auth/v1/signup")
+    @POST("/auth/v1/token?grant_type=password")
     suspend fun doSignIn(@Body req: SignInResponse): Response<SignInResponse>
 }
