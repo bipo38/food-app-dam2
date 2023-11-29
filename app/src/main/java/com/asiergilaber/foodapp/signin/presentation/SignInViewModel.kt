@@ -30,9 +30,6 @@ class SignInViewModel @Inject constructor(
 
     fun onSignInButtonCLicked() : Unit {
         viewModelScope.launch {
-            Log.i("Email" , _email.value.toString())
-            Log.i("Passw" , _password.value.toString())
-
             val result = signInUseCase(_email.value ,_password.value)
 
             if(result) {
