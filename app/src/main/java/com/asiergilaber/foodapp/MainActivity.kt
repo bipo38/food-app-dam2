@@ -8,8 +8,13 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.asiergilaber.foodapp.signin.presentation.Body
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.asiergilaber.foodapp.core.naviagtion.Navigator
+import com.asiergilaber.foodapp.signin.presentation.SignInScreen
 import com.asiergilaber.foodapp.signin.presentation.SignInViewModel
 import com.asiergilaber.foodapp.signup.presentation.SignUpScreen
 import com.asiergilaber.foodapp.signup.presentation.SignUpViewModel
@@ -27,6 +32,9 @@ class MainActivity : ComponentActivity() {
     private val signInViewModel: SignInViewModel by viewModels()
     private val signupViewModel : SignUpViewModel  by viewModels()
 
+    @Inject
+    lateinit var navigator: Navigator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -37,12 +45,38 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                    // Body(signInViewModel)
-                    SignUpScreen(signUpViewModel = signupViewModel)
+//                    SignUpScreen(signUpViewModel = signupViewModel)
+                    NavigationComposable(signInViewModel,signupViewModel,navigator)
                 }
             }
         }
     }
 }
 
+@Composable
+fun NavigationComposable(
+    signInViewModel: SignInViewModel,
+    signUpViewModel: SignUpViewModel,
+    navigate: Navigator,
+    modifier: Modifier = Modifier,
+    startDestination:String = "signIn"
+){
+    val navController = rememberNavController()
+    navigate.navController = navController
+
+    NavHost(
+        modifier = modifier,
+        navController = navController,
+        startDestination = startDestination
+    ){
+        composable("signIn") {
+            SignInScreen(signInViewModel )
+        }
+
+        composable("signUp"){
+            SignUpScreen(signUpViewModel)
+        }
+    }
+}
 
 

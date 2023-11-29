@@ -69,7 +69,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 placeholder = "Username",
                 keyboardType = KeyboardType.Text
             )
-
+            Spacer(modifier = Modifier.size(8.dp))
             InputTextBasic(
                 value = email,
                 label = "Email",
@@ -77,7 +77,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 placeholder = "Email",
                 keyboardType = KeyboardType.Email
             )
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.size(8.dp))
             InputTextBasic(
                 value = password,
                 label = "Password",
@@ -87,7 +87,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
             )
             Spacer(modifier = Modifier.size(16.dp))
 
-            TextButton(onClick = { /*ewModel.onNavigateToRegister()*/ }) {
+            TextButton(onClick = {signUpViewModel.navigateSignIn()}) {
                 Text(
                     text = "Have an account? Login!",
                     modifier = modifier
