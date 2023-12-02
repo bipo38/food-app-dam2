@@ -1,5 +1,6 @@
 package com.asiergilaber.foodapp.core.dependencyinjection
 
+import com.asiergilaber.foodapp.restaurant.data.network.RestaurantClient
 import com.asiergilaber.foodapp.signin.data.network.SignInClient
 import com.asiergilaber.foodapp.signup.data.network.SignUpClient
 import dagger.Module
@@ -27,6 +28,10 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideSignupClient(networkUser: ClientNet): SignUpClient =  networkUser.retrofit.create(SignUpClient::class.java)
+
+    @Singleton
+    @Provides
+    fun provideRestaurant(networkUser: ClientNet) : RestaurantClient = networkUser.retrofit.create(RestaurantClient::class.java)
 }
 
 class ClientNet {

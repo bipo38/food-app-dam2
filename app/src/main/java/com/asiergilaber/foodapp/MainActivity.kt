@@ -14,7 +14,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.asiergilaber.foodapp.core.naviagtion.Navigator
-import com.asiergilaber.foodapp.restaurants.presentation.RestaurantsScreen
+import com.asiergilaber.foodapp.restaurant.presentation.RestaurantViewModel
+import com.asiergilaber.foodapp.restaurant.presentation.RestaurantsScreen
 import com.asiergilaber.foodapp.signin.presentation.SignInScreen
 import com.asiergilaber.foodapp.signin.presentation.SignInViewModel
 import com.asiergilaber.foodapp.signup.presentation.SignUpScreen
@@ -32,6 +33,7 @@ class FoodApp: Application() {
 class MainActivity : ComponentActivity() {
     private val signInViewModel: SignInViewModel by viewModels()
     private val signupViewModel : SignUpViewModel  by viewModels()
+    private val restaurant : RestaurantViewModel by viewModels()
 
     @Inject
     lateinit var navigator: Navigator
@@ -45,7 +47,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    NavigationComposable(signInViewModel,signupViewModel,navigator)
+                    NavigationComposable(signInViewModel,signupViewModel,restaurant,navigator)
                 }
             }
         }
@@ -56,6 +58,7 @@ class MainActivity : ComponentActivity() {
 fun NavigationComposable(
     signInViewModel: SignInViewModel,
     signUpViewModel: SignUpViewModel,
+    restaurantViewModel: RestaurantViewModel,
     navigate: Navigator,
     modifier: Modifier = Modifier,
     startDestination:String = "signIn"
@@ -77,7 +80,7 @@ fun NavigationComposable(
         }
 
         composable("restaurants"){
-            RestaurantsScreen()
+            RestaurantsScreen(restaurantViewModel)
         }
     }
 }

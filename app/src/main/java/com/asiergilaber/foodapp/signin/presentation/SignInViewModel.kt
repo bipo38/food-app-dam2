@@ -18,10 +18,10 @@ class SignInViewModel @Inject constructor(
     private val signInUseCase: SignInUseCase
 ) : ViewModel()  {
 
-    private val _email = MutableStateFlow("")
+    private val _email = MutableStateFlow("asiergg60@gmail.com")
     val email = _email
 
-    private val _password = MutableStateFlow("")
+    private val _password = MutableStateFlow("123456")
     val password = _password
 
 
