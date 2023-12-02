@@ -77,6 +77,14 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 placeholder = "Email",
                 keyboardType = KeyboardType.Email
             )
+
+//            if (emailWrong.isNotEmpty() && emailChange) {
+//                Text(
+//                    text = emailWrong,
+//                    modifier = modifier,
+//                    color = MaterialTheme.colorScheme.error
+//                )
+//            }
             Spacer(modifier = Modifier.size(8.dp))
             InputTextBasic(
                 value = password,
@@ -97,7 +105,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 )
             }
 
-            PrimaryBtn(text = "Sign In", onClick = signUpViewModel.onSignUpButtonCLicked())
+            PrimaryBtn(text = "Sign In", onClick = {signUpViewModel.onSignUpButtonCLicked()})
 
         }
     }

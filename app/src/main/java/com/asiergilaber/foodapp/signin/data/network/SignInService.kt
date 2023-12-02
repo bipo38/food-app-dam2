@@ -1,21 +1,11 @@
 package com.asiergilaber.foodapp.signin.data.network
 
-import android.util.Log
-import com.asiergilaber.foodapp.core.security.PasswordHash
-import com.asiergilaber.foodapp.signin.data.network.response.SignInResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import retrofit2.Response
 import javax.inject.Inject
 
 class SignInService @Inject constructor(
     private val client: SignInClient,
 
 ){
-    suspend fun doSignIn(user: String, password: String): Boolean {
-        return withContext(Dispatchers.IO) {
-            val response = client.doSignIn(SignInResponse(user, password))
-
-            !response.body()?.email.isNullOrEmpty()
-        }
-    }
+    suspend fun doSignIn(email: String, password: String): Response<SignInResponse> = client.doSignIn(SignInRequest(email, password))
 }

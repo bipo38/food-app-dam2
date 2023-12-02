@@ -50,7 +50,9 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
                             .size(180.dp)
                     )
                     Text(text = "NoshUp",
-                        modifier = modifier.fillMaxWidth().padding(bottom = 20.dp),
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 20.dp),
                         style = MaterialTheme.typography.bodyMedium.copy(
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold ,
@@ -65,6 +67,15 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
                     placeholder = "Email",
                     keyboardType = KeyboardType.Email
                 )
+
+//                if (emailWrong.isNotEmpty() && emailChange) {
+//                    Text(
+//                        text = emailWrong,
+//                        modifier = modifier,
+//                        color = MaterialTheme.colorScheme.error
+//                    )
+//                }
+
                 Spacer(modifier = Modifier.size(16.dp))
                 InputTextBasic(
                     value = password,
@@ -77,17 +88,17 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
 
                 TextButton(onClick = { signInViewModel.navigateSignUp() }) {
                     Text(text = "Don’t have an account? Register now!" ,
-                        modifier = modifier.fillMaxWidth().padding(bottom = 15.dp, top = 15.dp),
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 15.dp, top = 15.dp),
                         style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black)
                     )
                 }
 
-                PrimaryBtn(text = "Sign In", onClick = signInViewModel.onSignInButtonCLicked())
-
-            }
-
+               PrimaryBtn(text = "Sign In", onClick = { signInViewModel.onSignInButtonClicked() })
 
     }
 
+}
 }
 

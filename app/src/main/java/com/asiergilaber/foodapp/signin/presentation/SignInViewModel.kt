@@ -34,12 +34,14 @@ class SignInViewModel @Inject constructor(
         navigator.navigate("signUp")
     }
 
-    fun onSignInButtonCLicked() : Unit {
+    fun onSignInButtonClicked() {
         viewModelScope.launch {
-            val result = signInUseCase(_email.value ,_password.value)
+            val result = signInUseCase(email.value ,password.value)
 
-            if(result) {
-                Log.i("COACH", "Navigate to Home")
+            if(result){
+                navigator.navigate("restaurants")
+            }else {
+                Log.i("Login" , "Login bad")
             }
 
         }

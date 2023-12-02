@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.asiergilaber.foodapp.core.naviagtion.Navigator
+import com.asiergilaber.foodapp.restaurants.presentation.RestaurantsScreen
 import com.asiergilaber.foodapp.signin.presentation.SignInScreen
 import com.asiergilaber.foodapp.signin.presentation.SignInViewModel
 import com.asiergilaber.foodapp.signup.presentation.SignUpScreen
@@ -39,13 +40,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FoodAppTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   // Body(signInViewModel)
-//                    SignUpScreen(signUpViewModel = signupViewModel)
+
                     NavigationComposable(signInViewModel,signupViewModel,navigator)
                 }
             }
@@ -75,6 +74,10 @@ fun NavigationComposable(
 
         composable("signUp"){
             SignUpScreen(signUpViewModel)
+        }
+
+        composable("restaurants"){
+            RestaurantsScreen()
         }
     }
 }

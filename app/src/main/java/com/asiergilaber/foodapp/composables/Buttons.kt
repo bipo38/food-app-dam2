@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import com.asiergilaber.foodapp.ui.theme.YellowMain
 
 @Composable
-fun PrimaryBtn(text: String,  onClick: Unit, enabled: Boolean = true ) {
-    Button(onClick = { onClick }  , enabled = enabled, colors = ButtonDefaults.buttonColors(
+fun PrimaryBtn(text: String,  onClick: () -> Unit, enabled: Boolean = true ) {
+    Button(onClick = onClick , enabled = enabled, colors = ButtonDefaults.buttonColors(
         contentColor = Color.White,
         containerColor = YellowMain
     ),  modifier = Modifier

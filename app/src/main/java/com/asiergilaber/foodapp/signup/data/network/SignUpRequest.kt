@@ -1,8 +1,8 @@
-package com.asiergilaber.foodapp.signin.data.network.response
+package com.asiergilaber.foodapp.signup.data.network
 
 import com.google.gson.annotations.SerializedName
 
-data class SignInResponse (
+data class SignUpRequest (
     @SerializedName("email") val email: String,
     @SerializedName("password") val password: String
 )
