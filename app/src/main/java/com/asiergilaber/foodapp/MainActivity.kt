@@ -10,10 +10,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.asiergilaber.foodapp.core.naviagtion.Navigator
+import com.asiergilaber.foodapp.restaurant.presentation.DishScreen
+import com.asiergilaber.foodapp.restaurant.presentation.DishViewModel
 import com.asiergilaber.foodapp.restaurant.presentation.RestaurantViewModel
 import com.asiergilaber.foodapp.restaurant.presentation.RestaurantsScreen
 import com.asiergilaber.foodapp.signin.presentation.SignInScreen
@@ -34,6 +37,7 @@ class MainActivity : ComponentActivity() {
     private val signInViewModel: SignInViewModel by viewModels()
     private val signupViewModel : SignUpViewModel  by viewModels()
     private val restaurant : RestaurantViewModel by viewModels()
+    private val dishViewModel: DishViewModel by viewModels()
 
     @Inject
     lateinit var navigator: Navigator
@@ -47,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    NavigationComposable(signInViewModel,signupViewModel,restaurant,navigator)
+                    NavigationComposable(signInViewModel,signupViewModel,restaurant, dishViewModel ,navigator)
                 }
             }
         }
@@ -59,6 +63,7 @@ fun NavigationComposable(
     signInViewModel: SignInViewModel,
     signUpViewModel: SignUpViewModel,
     restaurantViewModel: RestaurantViewModel,
+    dishViewModel: DishViewModel,
     navigate: Navigator,
     modifier: Modifier = Modifier,
     startDestination:String = "signIn"
@@ -81,6 +86,14 @@ fun NavigationComposable(
 
         composable("restaurants"){
             RestaurantsScreen(restaurantViewModel)
+        }
+
+        composable("dish/{id}"){
+            val id = it.arguments?.getString("id") ?: return@composable
+
+            dishViewModel.retrieveDish(Integer.parseInt(id))
+
+            DishScreen(dishViewModel)
         }
     }
 }

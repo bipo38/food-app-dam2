@@ -24,6 +24,10 @@ class RestaurantViewModel @Inject constructor(
         navigator.navigate("signIn")
     }
 
+    fun goToDish(id: Int){
+        navigator.navigate("dish/$id")
+    }
+
     fun getRestaurant(id: Int) {
         viewModelScope.launch {
             _restaurant.value = restaurantUseCase(id)

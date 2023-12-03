@@ -2,6 +2,7 @@ package com.asiergilaber.foodapp.restaurant.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -114,7 +115,9 @@ fun RestaurantsScreen(restaurantViewModel: RestaurantViewModel , modifier: Modif
 
                 dishes.forEach { dish ->
                     Row(horizontalArrangement = Arrangement.SpaceBetween,
-                        modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically
+                        modifier = Modifier.fillMaxSize().clickable { restaurantViewModel.goToDish(dish.id) },
+                        verticalAlignment = Alignment.CenterVertically,
+
                     ) {
                         AsyncImage(model = dish.coverUrl,
                             contentDescription = dish.name ?: "",

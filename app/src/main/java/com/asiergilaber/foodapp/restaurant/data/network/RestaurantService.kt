@@ -12,7 +12,7 @@ class RestaurantService @Inject constructor(
         val resRestaurants = clientRestaurant.restaurants()
 
         if(  !resRelation.isSuccessful|| !resRestaurants.isSuccessful || !resDishes.isSuccessful ) {
-            throw Exception("Falied to retrive data")
+            throw Exception("Failed to retrieve data")
         }
 
         val relation = resRelation.body()!!
@@ -29,6 +29,16 @@ class RestaurantService @Inject constructor(
 
             re
         }
+    }
+
+    suspend fun getSingleDish(id: Int): DishResponse{
+        var dishes = clientRestaurant.dishes()
+
+        if(dishes.isSuccessful){
+            return dishes.body()!!.find { it.id == id }!!
+        }
+
+        throw Exception("Failed to retrieve dish")
     }
 
     suspend fun getRestaurantSingle(id: Int): RestaurantResponse{
