@@ -95,7 +95,7 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
                     Text(text = "Don’t have an account? Register now!" ,
                         modifier = modifier
                             .fillMaxWidth()
-                            .padding(bottom = 15.dp, top = 15.dp).clickable { signInViewModel.navigateSignUp() },
+                            .padding(bottom = 15.dp, top = 15.dp),
                         style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black)
                     )
                 }
