@@ -1,6 +1,7 @@
 package com.asiergilaber.foodapp.signin.presentation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -94,7 +95,7 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
                     Text(text = "Don’t have an account? Register now!" ,
                         modifier = modifier
                             .fillMaxWidth()
-                            .padding(bottom = 15.dp, top = 15.dp),
+                            .padding(bottom = 15.dp, top = 15.dp).clickable { signInViewModel.navigateSignUp() },
                         style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black)
                     )
                 }
