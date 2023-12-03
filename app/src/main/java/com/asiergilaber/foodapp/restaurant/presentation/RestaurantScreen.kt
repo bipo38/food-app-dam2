@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.ExitToApp
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.LocationOn
@@ -48,6 +49,7 @@ fun RestaurantsScreen(restaurantViewModel: RestaurantViewModel , modifier: Modif
 
     if (restaurant == null) {
         restaurantViewModel.getRestaurant(1)
+        return
     }
 
     Column {
@@ -69,8 +71,9 @@ fun RestaurantsScreen(restaurantViewModel: RestaurantViewModel , modifier: Modif
                         .background(Color.White)
                         .padding(2.dp),
                         onClick = { restaurantViewModel.logout() }) {
-                        Icon(Icons.Outlined.ExitToApp, "Logout")
+                        Icon(Icons.Outlined.ArrowBack, "Logout")
                     }
+                    Spacer(modifier = Modifier.padding(horizontal = 4.dp))
 
                     IconButton(modifier = Modifier
                         .clip(CircleShape)
@@ -79,6 +82,7 @@ fun RestaurantsScreen(restaurantViewModel: RestaurantViewModel , modifier: Modif
                         onClick = { }) {
                         Icon(Icons.Outlined.FavoriteBorder, "Logout")
                     }
+                    Spacer(modifier = Modifier.padding(horizontal = 4.dp))
                     IconButton(modifier = Modifier
                         .clip(CircleShape)
                         .background(Color.White)
@@ -108,7 +112,6 @@ fun RestaurantsScreen(restaurantViewModel: RestaurantViewModel , modifier: Modif
             .verticalScroll(rememberScrollState())){
             val dishes =
                 arrayOf(restaurant?.dishes, restaurant?.dishes).flatMap { it ?: emptyList() }
-            
 
             
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
