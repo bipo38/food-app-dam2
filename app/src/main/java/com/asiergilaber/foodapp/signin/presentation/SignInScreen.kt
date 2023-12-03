@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -26,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.asiergilaber.foodapp.R
+import com.asiergilaber.foodapp.composables.InputPasswordBasic
 import com.asiergilaber.foodapp.ui.theme.YellowMain
 
 
@@ -65,8 +68,10 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
                     label = "Email",
                     onTextChanged = {signInViewModel.onEmailOrPasswordChanged(it, password)},
                     placeholder = "Email",
-                    keyboardType = KeyboardType.Email
+                    keyboardType = KeyboardOptions(keyboardType = KeyboardType.Email),
+
                 )
+
 
 //                if (emailWrong.isNotEmpty() && emailChange) {
 //                    Text(
@@ -77,12 +82,11 @@ fun SignInScreen(signInViewModel: SignInViewModel , modifier: Modifier = Modifie
 //                }
 
                 Spacer(modifier = Modifier.size(16.dp))
-                InputTextBasic(
+                InputPasswordBasic(
                     value = password,
                     label = "Password",
                     onTextChanged = {signInViewModel.onEmailOrPasswordChanged(email, it)},
                     placeholder = "Password",
-                    keyboardType = KeyboardType.Password
                 )
                 Spacer(modifier = Modifier.size(16.dp))
 

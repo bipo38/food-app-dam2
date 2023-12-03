@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.asiergilaber.foodapp.ui.theme.YellowLight
 import com.asiergilaber.foodapp.ui.theme.YellowMain
@@ -25,7 +26,7 @@ fun InputTextBasic(
     label: String,
     onTextChanged: (String) -> Unit,
     placeholder: String,
-    keyboardType: KeyboardType
+    keyboardType: KeyboardOptions
 ){
     OutlinedTextField(
         value = value,
@@ -35,7 +36,34 @@ fun InputTextBasic(
         placeholder = { Text(text = placeholder) },
         maxLines = 1,
         singleLine = true,
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+        keyboardOptions = keyboardType,
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = YellowLight,
+            textColor = Color.Black,
+            unfocusedBorderColor = YellowMain,
+        )
+
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun InputPasswordBasic(
+    value: String,
+    label: String,
+    onTextChanged: (String) -> Unit,
+    placeholder: String,
+){
+    OutlinedTextField(
+        value = value,
+        onValueChange = onTextChanged,
+        modifier = Modifier.fillMaxWidth(),
+        visualTransformation = PasswordVisualTransformation(),
+        label = { Text(text = label) },
+        placeholder = { Text(text = placeholder) },
+        maxLines = 1,
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = YellowLight,
             textColor = Color.Black,

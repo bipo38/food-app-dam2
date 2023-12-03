@@ -112,7 +112,7 @@ fun RestaurantsScreen(restaurantViewModel: RestaurantViewModel , modifier: Modif
             
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-                for (dish in dishes) {
+                dishes.forEach { dish ->
                     Row(horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically
                     ) {

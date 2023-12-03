@@ -35,7 +35,7 @@ class SignUpViewModel @Inject constructor(
         navigator.navigate("signIn")
     }
 
-    fun onSignUpButtonCLicked() : Unit {
+    fun onSignUpButtonClicked() : Unit {
         viewModelScope.launch {
            val result = signUpUseCase(email.value ,password.value)
 

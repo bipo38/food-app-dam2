@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -24,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.asiergilaber.foodapp.R
+import com.asiergilaber.foodapp.composables.InputPasswordBasic
 import com.asiergilaber.foodapp.composables.InputTextBasic
 import com.asiergilaber.foodapp.composables.PrimaryBtn
 import com.asiergilaber.foodapp.ui.theme.YellowMain
@@ -67,7 +69,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 label = "Username",
                 onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(email,password,it) },
                 placeholder = "Username",
-                keyboardType = KeyboardType.Text
+                keyboardType = KeyboardOptions(keyboardType = KeyboardType.Text)
             )
             Spacer(modifier = Modifier.size(8.dp))
             InputTextBasic(
@@ -75,7 +77,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 label = "Email",
                 onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(it, password,name) },
                 placeholder = "Email",
-                keyboardType = KeyboardType.Email
+                keyboardType = KeyboardOptions(keyboardType = KeyboardType.Email)
             )
 
 //            if (emailWrong.isNotEmpty() && emailChange) {
@@ -86,12 +88,11 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
 //                )
 //            }
             Spacer(modifier = Modifier.size(8.dp))
-            InputTextBasic(
+            InputPasswordBasic(
                 value = password,
                 label = "Password",
                 onTextChanged = { signUpViewModel.onEmailOrPasswordChanged(email, it,name) },
                 placeholder = "Password",
-                keyboardType = KeyboardType.Password
             )
             Spacer(modifier = Modifier.size(16.dp))
 
@@ -105,7 +106,7 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel , modifier: Modifier = Modifie
                 )
             }
 
-            PrimaryBtn(text = "Sign In", onClick = {signUpViewModel.onSignUpButtonCLicked()})
+            PrimaryBtn(text = "Sign Up", onClick = {signUpViewModel.onSignUpButtonClicked()})
 
         }
     }
